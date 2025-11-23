@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Ilharco - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        /* Custom subtle animation for buttons */
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+        }
+        .btn-outline:hover {
+            background-color: white;
+            color: black;
+        }
+        .btn-solid:hover {
+            opacity: 0.9;
+        }
+
+        /* Grid item hover effect */
+        .project-card {
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        /* Simple fade transition for page switching */
+        .fade-enter {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-white selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="w-full px-6 py-6 md:px-12 xl:pl-[330px] xl:pr-[100px] flex justify-between items-center font-medium tracking-wide fixed top-0 bg-black/90 backdrop-blur-sm z-50 border-b border-transparent transition-all duration-300" id="navbar">
+        <!-- Name made bigger (text-3xl = 30px) -->
+        <div onclick="switchView('home')" class="text-3xl cursor-pointer hover:text-white transition-colors">João Ilharco</div>
+        <!-- 'about' made 24px (text-2xl) -->
+        <div onclick="switchView('about')" class="text-2xl cursor-pointer hover:text-white transition-colors" id="about-link" style="color: rgba(255, 255, 255, 0.8)">about</div>
+    </nav>
+
+    <!-- Spacer for fixed nav -->
+    <div class="h-20"></div>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow relative">
+        
+        <!-- HOME VIEW -->
+        <div id="home-view" class="fade-enter">
+            <!-- Hero Section -->
+            <section class="px-6 md:px-12 xl:px-[330px] pt-8 pb-24 md:pt-16 md:pb-32 max-w-screen-2xl">
+                <h1 class="text-4xl md:text-6xl font-normal mb-8">Hi!</h1>
+                <!-- Updated: text increased to approx 40px (text-[40px]) -->
+                <p class="text-2xl md:text-[40px] leading-[1.2] font-light mb-12 max-w-4xl" style="color: rgba(255, 255, 255, 0.8)">
+                    I'm a designer working on the Human Interface Team at Apple. My passion is to create emotional experiences at the intersection of art, design, and AI.
+                </p>
+                <!-- Updated: Button made larger (text-2xl, more padding) -->
+                <a href="mailto:example@email.com" class="btn-hover btn-outline inline-block border border-white rounded-full px-10 py-4 text-2xl font-light tracking-wide">
+                    Let's work!
+                </a>
+            </section>
+
+            <!-- Project Grid -->
+            <!-- Removed xl:px-[330px] so grid is full width -->
+            <section class="w-full px-0 grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-black border-t border-zinc-900">
+                <!-- Project 1 -->
+                <div onclick="switchView('project', 'one')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group overflow-hidden">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Project One</span>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div onclick="switchView('project', 'two')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-l border-zinc-900">
+                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Project Two</span>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div onclick="switchView('project', 'three')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-zinc-900">
+                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Project Three</span>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div onclick="switchView('project', 'four')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-l border-zinc-900">
+                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Project Four</span>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div onclick="switchView('project', 'five')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-zinc-900">
+                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Project Five</span>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div onclick="switchView('project', 'six')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-l border-zinc-900">
+                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Project Six</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT VIEW -->
+        <div id="about-view" class="hidden fade-enter px-6 md:px-12 xl:px-[330px] pt-8 pb-24 md:pt-16 md:pb-32 w-full">
+            <!-- Bio -->
+            <!-- Updated: text-[40px] for big text -->
+            <div class="text-2xl md:text-[40px] leading-[1.2] font-light space-y-12 mb-24 max-w-6xl mx-auto" style="color: rgba(255, 255, 255, 0.8)">
+                <p>
+                    I'm João, a Product & Web Designer currently studying Design and Multimedia Communications. I'm passionate about creating engaging, user-centered digital products that solve real problems.
+                </p>
+                <p>
+                    I love untangling complex problems. I've designed internal dashboard tools for clients that focus on optimizing their workflow, making their jobs easier. I thrive as a team player, actively conducting user testing and implementing feedback to make the final design better for everyone.
+                </p>
+            </div>
+
+            <!-- Things I Love -->
+            <div class="mb-24 max-w-6xl mx-auto">
+                <h2 class="text-2xl font-semibold lowercase mb-6 text-white">some things i love:</h2>
+                <!-- Updated: text-[40px] for big text -->
+                <p class="text-2xl md:text-[40px] leading-[1.2] font-light" style="color: rgba(255, 255, 255, 0.8)">
+                    discovering a new typeface; <span class="font-semibold text-white">sci-fi movies</span>; finding the perfect UX solution after 10 tries; <span class="font-semibold text-white">that feeling when the front-end code matches the design perfectly</span>; exploring new cities; <span class="font-semibold text-white">a good cup of coffee</span>; 80s synth-pop; <span class="font-semibold text-white">making things that help people</span>.
+                </p>
+            </div>
+
+            <!-- Experience -->
+            <div class="mb-24 max-w-6xl mx-auto">
+                <h2 class="text-2xl font-semibold lowercase mb-8 text-white">experience:</h2>
+                
+                <div class="mb-16">
+                    <!-- Updated: Larger hierarchy for titles -->
+                    <h3 class="text-3xl md:text-4xl font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">Freelance Product Designer - A.A.C, Quinta do Outeiro and more</h3>
+                    <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.8)">2023–Present</p>
+                    <!-- Updated: text-3xl (30px) for "smaller" text -->
+                    <p class="text-2xl md:text-3xl font-light leading-tight" style="color: rgba(255, 255, 255, 0.8)">
+                        Designed internal dashboard tools for event management, focusing on usability and workflow optimization. Conducted user testing sessions and implemented feedback into the final design.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl md:text-4xl font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">UI/UX Design - University Coursework</h3>
+                    <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.8)">2023–Present</p>
+                    <!-- Updated: text-3xl (30px) for "smaller" text -->
+                    <p class="text-2xl md:text-3xl font-light leading-tight" style="color: rgba(255, 255, 255, 0.8)">
+                        Designed several digital products, including responsive websites and app interfaces for academic and client-based projects. Delivered a full web solution for an Animal Welfare Association, from user research and wireframing to final visual design and prototyping in Figma.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="mb-24 max-w-6xl mx-auto">
+                <h2 class="text-2xl font-semibold lowercase mb-8 text-white">education:</h2>
+                <div>
+                    <h3 class="text-3xl md:text-4xl font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">ESEC - Bachelor's in Design and Multimedia Communications</h3>
+                    <!-- Updated: text-3xl (30px) for "smaller" text -->
+                    <p class="text-2xl md:text-3xl font-light" style="color: rgba(255, 255, 255, 0.8)">2023-2025, Coimbra</p>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-24 max-w-6xl mx-auto">
+                <h2 class="text-2xl font-semibold lowercase mb-12 text-white">skills:</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-lg font-light leading-relaxed">
+                    <div>
+                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Design</h4>
+                        <!-- Updated: text-3xl (30px) for "smaller" text -->
+                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                            <li>UX/UI Design</li>
+                            <li>Interaction Design</li>
+                            <li>Visual Design</li>
+                            <li>Prototyping</li>
+                            <li>User Research</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Tools</h4>
+                        <!-- Updated: text-3xl (30px) for "smaller" text -->
+                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                            <li>Figma</li>
+                            <li>Adobe Suite</li>
+                            <li>cinema4d</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Technical</h4>
+                        <!-- Updated: text-3xl (30px) for "smaller" text -->
+                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                            <li>Javascript</li>
+                            <li>C</li>
+                            <li>Python</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Personal</h4>
+                        <!-- Updated: text-3xl (30px) for "smaller" text -->
+                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                            <li>Efficiency-Driven</li>
+                            <li>Dependability</li>
+                            <li>Leadership</li>
+                            <li>Collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <!-- Updated: Buttons made larger -->
+            <div class="flex flex-wrap gap-6 max-w-6xl mx-auto">
+                <button class="btn-hover btn-outline border border-white rounded-full px-10 py-4 text-2xl font-light tracking-wide">
+                    Let's chat!
+                </button>
+                <button class="btn-hover btn-solid bg-white text-black rounded-full px-10 py-4 text-2xl font-medium tracking-wide">
+                    My Resume
+                </button>
+            </div>
+        </div>
+
+        <!-- PROJECT VIEW (Dynamic) -->
+        <div id="project-view" class="hidden fade-enter">
+            
+            <!-- Project Hero -->
+            <section class="px-6 md:px-12 xl:px-[330px] h-[60vh] flex flex-col justify-end pb-12 w-full">
+                <h1 id="p-title" class="text-4xl md:text-6xl font-normal mb-2">Project Title</h1>
+                <p id="p-date" class="text-lg" style="color: rgba(255, 255, 255, 0.8)">Date</p>
+            </section>
+
+            <!-- Briefing Section -->
+            <section class="bg-[#111111] w-full py-20 md:py-28">
+                <div class="px-6 md:px-12 xl:px-[330px] w-full grid md:grid-cols-2 gap-12 items-start">
+                    <h1 id="p-brief-title" class="text-5xl md:text-7xl font-medium leading-tight">
+                        Brief Title
+                    </h1>
+                    <p id="p-brief-text" class="text-xl md:text-2xl font-light leading-relaxed tracking-wide text-justify" style="color: rgba(255, 255, 255, 0.8)">
+                        Brief text...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project Content Blocks Container -->
+            <section id="p-blocks-container" class="px-6 md:px-12 xl:px-[330px] py-24 w-full space-y-32">
+                <!-- Content injected via JS -->
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 md:px-12 xl:px-[330px] py-12 flex flex-col md:flex-row justify-between items-start md:items-center text-2xl font-medium tracking-wide border-t border-zinc-900 mt-auto" style="color: rgba(255, 255, 255, 0.8)">
+        <div class="flex items-center gap-4 mb-4 md:mb-0">
+            <a href="#" class="hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </a>
+            <span>•</span>
+            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+            <span>•</span>
+            <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+        
+        <div>
+            Made in Portugal
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Data for all projects
+        const projects = {
+            'one': {
+                title: "Project One",
+                date: "September 2020",
+                briefTitle: "Bringing local events to the virtual landscape",
+                briefText: "We redefined Jameson's cultural relevance in music by creating Distilled Sounds, a global platform celebrating connection and collaboration through genre-defying music. We signed Grammy-winning artist Anderson .Paak as our first 'Music Distiller' and the campaign united 20 global artists from regions including India, South Africa, and the USA to create unique musical blends. Centred at the Jameson Sound Distillery in Ireland, artists participated in jam sessions, workshops, and performances, enriched by partnerships with Fender, High Snobiety, and NTS.",
+                blocks: [
+                    { title: "Website", text: "Mono is a tribute to focusing on one thing at the time. Mono-focus, mono-space. Doing less, but better. Its construction was inspired by mono-spaced typography." },
+                    { title: "Campaign", text: "A series of digital activations brought the virtual distillery to life, allowing users to mix their own tracks using stems from the artists' sessions." },
+                    { title: "Identity", text: "The visual language combined raw, industrial textures with vibrant, sound-reactive motion graphics to represent the fusion of genres." }
+                ]
+            },
+            'two': {
+                title: "Project Two",
+                date: "March 2021",
+                briefTitle: "Redefining financial dashboards for the modern era",
+                briefText: "This project involved a complete overhaul of a legacy fintech application. The goal was to simplify complex data visualization while maintaining the depth of information required by power users. We utilized a modular card-based system that allowed users to customize their workspace. By reducing visual noise and focusing on hierarchy, we increased user engagement time by 40% and significantly reduced support tickets related to navigation.",
+                blocks: [
+                    { title: "Dashboard", text: "A clean, grid-based layout allows users to see critical market data at a glance, with customizable widgets for specific stocks." },
+                    { title: "Mobile App", text: "Translating the complex desktop experience to mobile required a rigorous prioritization of features and touch-friendly data interaction." },
+                    { title: "Design System", text: "We built a comprehensive design system named 'Ledger' to ensure consistency across web, iOS, and Android platforms." }
+                ]
+            },
+            'three': {
+                title: "Project Three",
+                date: "July 2022",
+                briefTitle: "Sustainable fashion marketplace for circular economy",
+                briefText: "Connecting eco-conscious consumers with ethical brands, this marketplace was designed to make the origin of clothes transparent. We built a supply chain tracking feature directly into the product page, allowing users to see the journey of their garment. The aesthetic was intentionally earthy yet modern, avoiding typical 'greenwashing' tropes in favor of honest, data-driven storytelling about sustainability impact.",
+                blocks: [
+                    { title: "Product Page", text: "The interface highlights the 'impact score' of each item, calculating water saved and carbon reduced compared to industry averages." },
+                    { title: "Community", text: "A social hub within the app where users share repair tips and styling advice to prolong the lifecycle of their garments." },
+                    { title: "Branding", text: "The logo and typography reflect the circular nature of the economy, using organic curves and recycled paper textures in digital assets." }
+                ]
+            },
+            'four': {
+                title: "Project Four",
+                date: "January 2023",
+                briefTitle: "AI-driven image editor for rapid prototyping",
+                briefText: "Exploring the boundaries of generative art, we created a tool that assists designers in the early stages of concepting. By sketching rough shapes and typing prompts, users can generate high-fidelity references in seconds. The interface is minimal, getting out of the way to let the AI and the user collaborate. The focus was on 'steerability'—giving the user control over the AI's output rather than just random generation.",
+                blocks: [
+                    { title: "Interface", text: "A split-screen canvas allows for real-time generation as the user draws, creating a feedback loop between human intent and machine rendering." },
+                    { title: "Output", text: "Examples of the high-fidelity textures generated for architectural visualization concepts." },
+                    { title: "Interaction", text: "Custom gesture controls were implemented to allow for intuitive manipulation of light sources and composition." }
+                ]
+            },
+            'five': {
+                title: "Project Five",
+                date: "May 2023",
+                briefTitle: "Urban mobility solution for smart cities",
+                briefText: "Simplifying city navigation, this app integrates public transit, ride-sharing, and bike rentals into a single journey planner. The challenge was unifying disparate data sources into a cohesive UI. We developed a 'timeline' view that visualizes the entire trip linearly, accounting for transfer times and walking distances. The dark mode UI was specifically tuned for readability in variable outdoor lighting conditions.",
+                blocks: [
+                    { title: "Map View", text: "A clutter-free map style that emphasizes routes and transit hubs over general geographic details, using high-contrast colors." },
+                    { title: "Ticketing", text: "A universal QR code system that works across all transit modes, accessible with a single tap from the lock screen." },
+                    { title: "Onboarding", text: "An illustrative onboarding flow that explains the benefits of multimodal transport to new users." }
+                ]
+            },
+            'six': {
+                title: "Project Six",
+                date: "August 2023",
+                briefTitle: "Mental health companion for daily mindfulness",
+                briefText: "A gentle approach to daily mindfulness, this app avoids gamification and streaks in favor of a supportive, pressure-free environment. The design uses soft gradients, fluid animations, and generative ambient soundscapes to induce a state of calm. User research indicated that notifications were a source of stress, so we implemented a 'passive' check-in system that adapts to the user's usage patterns without pestering them.",
+                blocks: [
+                    { title: "Meditation", text: "The player interface is stripped back to the essentials, with a breathing guide that syncs with haptic feedback." },
+                    { title: "Journaling", text: "A voice-first journaling feature that transcribes thoughts and uses sentiment analysis to track mood trends over time." },
+                    { title: "Visuals", text: "Generative abstract art backgrounds that slowly evolve based on the duration of the user's session." }
+                ]
+            }
+        };
+
+        function switchView(viewName, projectId = null) {
+            const homeView = document.getElementById('home-view');
+            const aboutView = document.getElementById('about-view');
+            const projectView = document.getElementById('project-view');
+            const aboutLink = document.getElementById('about-link');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Reset all views
+            homeView.classList.add('hidden');
+            aboutView.classList.add('hidden');
+            projectView.classList.add('hidden');
+            
+            // Reset about link
+            aboutLink.classList.remove('text-white');
+            aboutLink.style.color = 'rgba(255, 255, 255, 0.8)';
+
+            if (viewName === 'about') {
+                aboutView.classList.remove('hidden');
+                aboutLink.style.color = ''; 
+                aboutLink.classList.add('text-white');
+            } else if (viewName === 'project' && projectId && projects[projectId]) {
+                // Load Project Data
+                const data = projects[projectId];
+                
+                // Populate Header
+                document.getElementById('p-title').innerText = data.title;
+                document.getElementById('p-date').innerText = data.date;
+                
+                // Populate Brief
+                document.getElementById('p-brief-title').innerText = data.briefTitle;
+                document.getElementById('p-brief-text').innerText = data.briefText;
+                
+                // Populate Content Blocks
+                const container = document.getElementById('p-blocks-container');
+                container.innerHTML = ''; // Clear existing
+                
+                data.blocks.forEach(block => {
+                    const blockHTML = `
+                        <div>
+                            <div class="mb-6">
+                                <h1 class="text-4xl md:text-6xl font-medium mb-4">${block.title}</h1>
+                                <p class="font-light text-2xl md:text-[32px] leading-tight" style="color: rgba(255, 255, 255, 0.8)">
+                                    ${block.text}
+                                </p>
+                            </div>
+                            <div class="w-full aspect-video bg-[#111111] rounded-2xl">
+                                <!-- Image placeholder -->
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += blockHTML;
+                });
+
+                projectView.classList.remove('hidden');
+            } else {
+                homeView.classList.remove('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>
