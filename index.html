@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Ilharco - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Updated Google Fonts Link to IBM Plex Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            /* Updated font-family to IBM Plex Sans */
+            font-family: 'IBM Plex Sans', sans-serif;
             background-color: #000000;
             color: #ffffff;
         }
@@ -50,11 +52,9 @@
 <body class="min-h-screen flex flex-col selection:bg-white selection:text-black">
 
     <!-- Navigation -->
-    <nav class="w-full px-6 py-6 md:px-12 xl:pl-[330px] xl:pr-[100px] flex justify-between items-center font-medium tracking-wide fixed top-0 bg-black/90 backdrop-blur-sm z-50 border-b border-transparent transition-all duration-300" id="navbar">
-        <!-- Name made bigger (text-3xl = 30px) -->
+    <nav class="w-full px-6 py-6 md:px-12 xl:pl-[330px] xl:pr-[330px] flex justify-between items-center font-medium tracking-wide fixed top-0 bg-black/90 backdrop-blur-sm z-50 border-b border-transparent transition-all duration-300" id="navbar">
         <div onclick="switchView('home')" class="text-3xl cursor-pointer hover:text-white transition-colors">João Ilharco</div>
-        <!-- 'about' made 24px (text-2xl) -->
-        <div onclick="switchView('about')" class="text-2xl cursor-pointer hover:text-white transition-colors" id="about-link" style="color: rgba(255, 255, 255, 0.8)">about</div>
+        <div onclick="switchView('about')" class="text-[23px] font-normal cursor-pointer hover:text-white transition-colors" id="about-link" style="color: rgba(255, 255, 255, 0.8)">about</div>
     </nav>
 
     <!-- Spacer for fixed nav -->
@@ -68,18 +68,15 @@
             <!-- Hero Section -->
             <section class="px-6 md:px-12 xl:px-[330px] pt-8 pb-24 md:pt-16 md:pb-32 max-w-screen-2xl">
                 <h1 class="text-4xl md:text-6xl font-normal mb-8">Hi!</h1>
-                <!-- Updated: text increased to approx 40px (text-[40px]) -->
                 <p class="text-2xl md:text-[40px] leading-[1.2] font-light mb-12 max-w-4xl" style="color: rgba(255, 255, 255, 0.8)">
                     I'm a designer working on the Human Interface Team at Apple. My passion is to create emotional experiences at the intersection of art, design, and AI.
                 </p>
-                <!-- Updated: Button made larger (text-2xl, more padding) -->
                 <a href="mailto:example@email.com" class="btn-hover btn-outline inline-block border border-white rounded-full px-10 py-4 text-2xl font-light tracking-wide">
                     Let's work!
                 </a>
             </section>
 
             <!-- Project Grid -->
-            <!-- Removed xl:px-[330px] so grid is full width -->
             <section class="w-full px-0 grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-black border-t border-zinc-900">
                 <!-- Project 1 -->
                 <div onclick="switchView('project', 'one')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group overflow-hidden">
@@ -123,8 +120,8 @@
         <!-- ABOUT VIEW -->
         <div id="about-view" class="hidden fade-enter px-6 md:px-12 xl:px-[330px] pt-8 pb-24 md:pt-16 md:pb-32 w-full">
             <!-- Bio -->
-            <!-- Updated: text-[40px] for big text -->
-            <div class="text-2xl md:text-[40px] leading-[1.2] font-light space-y-12 mb-24 max-w-6xl mx-auto" style="color: rgba(255, 255, 255, 0.8)">
+            <!-- Updated: Standardized to text-[32px] for cleaner hierarchy -->
+            <div class="text-2xl md:text-[32px] leading-[1.2] font-light space-y-12 mb-24 max-w-6xl mx-auto" style="color: rgba(255, 255, 255, 0.8)">
                 <p>
                     I'm João, a Product & Web Designer currently studying Design and Multimedia Communications. I'm passionate about creating engaging, user-centered digital products that solve real problems.
                 </p>
@@ -135,32 +132,37 @@
 
             <!-- Things I Love -->
             <div class="mb-24 max-w-6xl mx-auto">
-                <h2 class="text-2xl font-semibold lowercase mb-6 text-white">some things i love:</h2>
-                <!-- Updated: text-[40px] for big text -->
-                <p class="text-2xl md:text-[40px] leading-[1.2] font-light" style="color: rgba(255, 255, 255, 0.8)">
-                    discovering a new typeface; <span class="font-semibold text-white">sci-fi movies</span>; finding the perfect UX solution after 10 tries; <span class="font-semibold text-white">that feeling when the front-end code matches the design perfectly</span>; exploring new cities; <span class="font-semibold text-white">a good cup of coffee</span>; 80s synth-pop; <span class="font-semibold text-white">making things that help people</span>.
+                <!-- Header: text-[23px] -->
+                <h2 class="text-[23px] font-semibold lowercase mb-6 text-white">some things i love:</h2>
+                <!-- Content: text-[32px], highlights changed to font-light -->
+                <p class="text-2xl md:text-[32px] leading-[1.2] font-light" style="color: rgba(255, 255, 255, 0.8)">
+                    discovering a new typeface; <span class="font-light text-white">sci-fi movies</span>; finding the perfect UX solution after 10 tries; <span class="font-light text-white">that feeling when the front-end code matches the design perfectly</span>; exploring new cities; <span class="font-light text-white">a good cup of coffee</span>; 80s synth-pop; <span class="font-light text-white">making things that help people</span>.
                 </p>
             </div>
 
             <!-- Experience -->
             <div class="mb-24 max-w-6xl mx-auto">
-                <h2 class="text-2xl font-semibold lowercase mb-8 text-white">experience:</h2>
+                <!-- Header: text-[23px] -->
+                <h2 class="text-[23px] font-semibold lowercase mb-8 text-white">experience:</h2>
                 
                 <div class="mb-16">
-                    <!-- Updated: Larger hierarchy for titles -->
-                    <h3 class="text-3xl md:text-4xl font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">Freelance Product Designer - A.A.C, Quinta do Outeiro and more</h3>
-                    <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.8)">2023–Present</p>
-                    <!-- Updated: text-3xl (30px) for "smaller" text -->
-                    <p class="text-2xl md:text-3xl font-light leading-tight" style="color: rgba(255, 255, 255, 0.8)">
+                    <!-- Title: text-[26px] (Consistent with Project blocks) -->
+                    <h3 class="text-[26px] font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">Freelance Product Designer - A.A.C, Quinta do Outeiro and more</h3>
+                    <!-- Date: text-[23px] (Consistent with Project brief) -->
+                    <p class="text-[23px] mb-6" style="color: rgba(255, 255, 255, 0.8)">2023–Present</p>
+                    <!-- Body: text-[23px] (Consistent with Project brief) -->
+                    <p class="text-[23px] font-light leading-tight" style="color: rgba(255, 255, 255, 0.8)">
                         Designed internal dashboard tools for event management, focusing on usability and workflow optimization. Conducted user testing sessions and implemented feedback into the final design.
                     </p>
                 </div>
 
                 <div>
-                    <h3 class="text-3xl md:text-4xl font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">UI/UX Design - University Coursework</h3>
-                    <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.8)">2023–Present</p>
-                    <!-- Updated: text-3xl (30px) for "smaller" text -->
-                    <p class="text-2xl md:text-3xl font-light leading-tight" style="color: rgba(255, 255, 255, 0.8)">
+                    <!-- Title: text-[26px] -->
+                    <h3 class="text-[26px] font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">UI/UX Design - University Coursework</h3>
+                    <!-- Date: text-[23px] -->
+                    <p class="text-[23px] mb-6" style="color: rgba(255, 255, 255, 0.8)">2023–Present</p>
+                    <!-- Body: text-[23px] -->
+                    <p class="text-[23px] font-light leading-tight" style="color: rgba(255, 255, 255, 0.8)">
                         Designed several digital products, including responsive websites and app interfaces for academic and client-based projects. Delivered a full web solution for an Animal Welfare Association, from user research and wireframing to final visual design and prototyping in Figma.
                     </p>
                 </div>
@@ -168,22 +170,26 @@
 
             <!-- Education -->
             <div class="mb-24 max-w-6xl mx-auto">
-                <h2 class="text-2xl font-semibold lowercase mb-8 text-white">education:</h2>
+                <!-- Header: text-[23px] -->
+                <h2 class="text-[23px] font-semibold lowercase mb-8 text-white">education:</h2>
                 <div>
-                    <h3 class="text-3xl md:text-4xl font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">ESEC - Bachelor's in Design and Multimedia Communications</h3>
-                    <!-- Updated: text-3xl (30px) for "smaller" text -->
-                    <p class="text-2xl md:text-3xl font-light" style="color: rgba(255, 255, 255, 0.8)">2023-2025, Coimbra</p>
+                    <!-- Title: text-[26px] -->
+                    <h3 class="text-[26px] font-light mb-2" style="color: rgba(255, 255, 255, 0.8)">ESEC - Bachelor's in Design and Multimedia Communications</h3>
+                    <!-- Body: text-[23px] -->
+                    <p class="text-[23px] font-light" style="color: rgba(255, 255, 255, 0.8)">2023-2025, Coimbra</p>
                 </div>
             </div>
 
             <!-- Skills -->
             <div class="mb-24 max-w-6xl mx-auto">
-                <h2 class="text-2xl font-semibold lowercase mb-12 text-white">skills:</h2>
+                <!-- Header: text-[23px] -->
+                <h2 class="text-[23px] font-semibold lowercase mb-12 text-white">skills:</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-lg font-light leading-relaxed">
                     <div>
-                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Design</h4>
-                        <!-- Updated: text-3xl (30px) for "smaller" text -->
-                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                        <!-- Category: text-[23px] -->
+                        <h4 class="mb-4 text-[23px] font-normal" style="color: rgba(255, 255, 255, 0.8)">Design</h4>
+                        <!-- List: text-[23px] -->
+                        <ul class="space-y-2 text-[23px]" style="color: rgba(255, 255, 255, 0.8)">
                             <li>UX/UI Design</li>
                             <li>Interaction Design</li>
                             <li>Visual Design</li>
@@ -192,18 +198,16 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Tools</h4>
-                        <!-- Updated: text-3xl (30px) for "smaller" text -->
-                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                        <h4 class="mb-4 text-[23px] font-normal" style="color: rgba(255, 255, 255, 0.8)">Tools</h4>
+                        <ul class="space-y-2 text-[23px]" style="color: rgba(255, 255, 255, 0.8)">
                             <li>Figma</li>
                             <li>Adobe Suite</li>
                             <li>cinema4d</li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Technical</h4>
-                        <!-- Updated: text-3xl (30px) for "smaller" text -->
-                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                        <h4 class="mb-4 text-[23px] font-normal" style="color: rgba(255, 255, 255, 0.8)">Technical</h4>
+                        <ul class="space-y-2 text-[23px]" style="color: rgba(255, 255, 255, 0.8)">
                             <li>Javascript</li>
                             <li>C</li>
                             <li>Python</li>
@@ -211,9 +215,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="mb-4 text-xl font-normal" style="color: rgba(255, 255, 255, 0.8)">Personal</h4>
-                        <!-- Updated: text-3xl (30px) for "smaller" text -->
-                        <ul class="space-y-2 text-2xl md:text-3xl" style="color: rgba(255, 255, 255, 0.8)">
+                        <h4 class="mb-4 text-[23px] font-normal" style="color: rgba(255, 255, 255, 0.8)">Personal</h4>
+                        <ul class="space-y-2 text-[23px]" style="color: rgba(255, 255, 255, 0.8)">
                             <li>Efficiency-Driven</li>
                             <li>Dependability</li>
                             <li>Leadership</li>
@@ -224,7 +227,6 @@
             </div>
 
             <!-- Buttons -->
-            <!-- Updated: Buttons made larger -->
             <div class="flex flex-wrap gap-6 max-w-6xl mx-auto">
                 <button class="btn-hover btn-outline border border-white rounded-full px-10 py-4 text-2xl font-light tracking-wide">
                     Let's chat!
@@ -247,10 +249,10 @@
             <!-- Briefing Section -->
             <section class="bg-[#111111] w-full py-20 md:py-28">
                 <div class="px-6 md:px-12 xl:px-[330px] w-full grid md:grid-cols-2 gap-12 items-start">
-                    <h1 id="p-brief-title" class="text-5xl md:text-7xl font-medium leading-tight">
+                    <h1 id="p-brief-title" class="text-5xl md:text-6xl font-medium leading-tight">
                         Brief Title
                     </h1>
-                    <p id="p-brief-text" class="text-xl md:text-2xl font-light leading-relaxed tracking-wide text-justify" style="color: rgba(255, 255, 255, 0.8)">
+                    <p id="p-brief-text" class="text-[23px] font-light leading-relaxed tracking-wide text-justify" style="color: rgba(255, 255, 255, 0.8)">
                         Brief text...
                     </p>
                 </div>
@@ -266,7 +268,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="px-6 md:px-12 xl:px-[330px] py-12 flex flex-col md:flex-row justify-between items-start md:items-center text-2xl font-medium tracking-wide border-t border-zinc-900 mt-auto" style="color: rgba(255, 255, 255, 0.8)">
+    <footer class="px-6 md:px-12 xl:px-[330px] py-12 flex flex-col md:flex-row justify-between items-start md:items-center text-[23px] font-normal tracking-wide border-t border-zinc-900 mt-auto" style="color: rgba(255, 255, 255, 0.8)">
         <div class="flex items-center gap-4 mb-4 md:mb-0">
             <a href="#" class="hover:text-white transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -396,8 +398,8 @@
                     const blockHTML = `
                         <div>
                             <div class="mb-6">
-                                <h1 class="text-4xl md:text-6xl font-medium mb-4">${block.title}</h1>
-                                <p class="font-light text-2xl md:text-[32px] leading-tight" style="color: rgba(255, 255, 255, 0.8)">
+                                <h1 class="text-4xl md:text-5xl font-medium mb-4">${block.title}</h1>
+                                <p class="font-light text-2xl md:text-[26px] leading-tight" style="color: rgba(255, 255, 255, 0.8)">
                                     ${block.text}
                                 </p>
                             </div>
