@@ -80,38 +80,56 @@
             <section class="w-full px-0 grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-black border-t border-zinc-900">
                 <!-- Project 1 -->
                 <div onclick="switchView('project', 'one')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group overflow-hidden">
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-sm tracking-widest uppercase">Project One</span>
+                    <!-- Background image for Project 1 -->
+                    <img src="assets/Quinta do Outeiro/project1.png" alt="Quinta do Outeiro project" class="w-full h-full object-cover" />
+                    <!-- Hover overlay label -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Quinta do Outeiro</span>
                     </div>
                 </div>
                 <!-- Project 2 -->
                 <div onclick="switchView('project', 'two')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-l border-zinc-900">
-                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-sm tracking-widest uppercase">Project Two</span>
+                    <!-- Background image for Project 1 -->
+                    <img src="assets/Ticketwave/TWLandingPage.png" alt="TicketWave project" class="w-full h-full object-cover" />
+                    <!-- Hover overlay label --> 
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">TicketWave</span>
                     </div>
                 </div>
                 <!-- Project 3 -->
                 <div onclick="switchView('project', 'three')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-zinc-900">
-                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-sm tracking-widest uppercase">Project Three</span>
+                    <!-- Background image for Project 1 -->
+                    <img src="assets/Patudos/OsPatudosLandingpage.png" alt="Patudos project" class="w-full h-full object-cover" />
+                    <!-- Hover overlay label -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Patudos</span>
                     </div>
                 </div>
                 <!-- Project 4 -->
                 <div onclick="switchView('project', 'four')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-l border-zinc-900">
-                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-sm tracking-widest uppercase">Project Four</span>
+                    <!-- Background image for Project 1 -->
+                    <img src="assets/Squid Games/1.png" alt="Squid Games project" class="w-full h-full object-cover" />
+                    <!-- Hover overlay label -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Squid Games</span>
                     </div>
                 </div>
                 <!-- Project 5 -->
                 <div onclick="switchView('project', 'five')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-zinc-900">
-                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-sm tracking-widest uppercase">Project Five</span>
+                    <!-- Background image for Project 1 -->
+                    <img src="assets/SAL/SALlandingpage.png" alt="SAL project" class="w-full h-full object-cover" />
+                    <!-- Hover overlay label -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">SAL</span>
                     </div>
                 </div>
                 <!-- Project 6 -->
                 <div onclick="switchView('project', 'six')" class="project-card aspect-[4/3] md:aspect-[16/10] bg-[#0f0f11] w-full relative group border-t border-l border-zinc-900">
-                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span class="text-sm tracking-widest uppercase">Project Six</span>
+                    <!-- Background image for Project 1 -->
+                    <img src="assets/Fingerprint/1.png" alt="Fingerprint project" class="w-full h-full object-cover" />
+                    <!-- Hover overlay label -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-sm tracking-widest uppercase">Fingerprint</span>
                     </div>
                 </div>
             </section>
@@ -241,7 +259,12 @@
         <div id="project-view" class="hidden fade-enter">
             
             <!-- Project Hero -->
-            <section class="px-6 md:px-12 xl:px-[330px] h-[60vh] flex flex-col justify-end pb-12 w-full">
+            <section class="px-6 md:px-12 xl:px-[330px] h-[60vh] flex flex-col justify-end pb-12 w-full relative overflow-hidden">
+                <!-- Dynamic Hero Image -->
+                <div id="p-header-image-wrapper" class="absolute inset-0 -z-10">
+                    <img id="p-header-image" src="" alt="" class="w-full h-full object-cover hidden" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                </div>
                 <h1 id="p-title" class="text-4xl md:text-6xl font-normal mb-2">Project Title</h1>
                 <p id="p-date" class="text-lg" style="color: rgba(255, 255, 255, 0.8)">Date</p>
             </section>
@@ -289,69 +312,74 @@
         // Data for all projects
         const projects = {
             'one': {
-                title: "Project One",
+                title: "Quinta do Outeiro",
                 date: "September 2020",
                 briefTitle: "Bringing local events to the virtual landscape",
                 briefText: "We redefined Jameson's cultural relevance in music by creating Distilled Sounds, a global platform celebrating connection and collaboration through genre-defying music. We signed Grammy-winning artist Anderson .Paak as our first 'Music Distiller' and the campaign united 20 global artists from regions including India, South Africa, and the USA to create unique musical blends. Centred at the Jameson Sound Distillery in Ireland, artists participated in jam sessions, workshops, and performances, enriched by partnerships with Fender, High Snobiety, and NTS.",
+                headerImage: "assets/Quinta do Outeiro/project1.png",
                 blocks: [
-                    { title: "Website", text: "Mono is a tribute to focusing on one thing at the time. Mono-focus, mono-space. Doing less, but better. Its construction was inspired by mono-spaced typography." },
-                    { title: "Campaign", text: "A series of digital activations brought the virtual distillery to life, allowing users to mix their own tracks using stems from the artists' sessions." },
-                    { title: "Identity", text: "The visual language combined raw, industrial textures with vibrant, sound-reactive motion graphics to represent the fusion of genres." }
+                    { title: "Website", text: "Mono is a tribute to focusing on one thing at the time. Mono-focus, mono-space. Doing less, but better. Its construction was inspired by mono-spaced typography.", image: "assets/Quinta do Outeiro/Frame 28.png" },
+                
                 ]
             },
             'two': {
-                title: "Project Two",
+                title: "TicketWave",
                 date: "March 2021",
                 briefTitle: "Redefining financial dashboards for the modern era",
                 briefText: "This project involved a complete overhaul of a legacy fintech application. The goal was to simplify complex data visualization while maintaining the depth of information required by power users. We utilized a modular card-based system that allowed users to customize their workspace. By reducing visual noise and focusing on hierarchy, we increased user engagement time by 40% and significantly reduced support tickets related to navigation.",
+                headerImage: "assets/Ticketwave/TWheader.png",
                 blocks: [
-                    { title: "Dashboard", text: "A clean, grid-based layout allows users to see critical market data at a glance, with customizable widgets for specific stocks." },
-                    { title: "Mobile App", text: "Translating the complex desktop experience to mobile required a rigorous prioritization of features and touch-friendly data interaction." },
-                    { title: "Design System", text: "We built a comprehensive design system named 'Ledger' to ensure consistency across web, iOS, and Android platforms." }
+                    { title: "Dashboard", text: "A clean, grid-based layout allows users to see critical market data at a glance, with customizable widgets for specific stocks.", image: "assets/Ticketwave/TWLandingPage.png" },
+                    { title: "Mobile App", text: "Translating the complex desktop experience to mobile required a rigorous prioritization of features and touch-friendly data interaction.", image: "assets/Ticketwave/TWLandingPage.png" },
+                    { title: "Design System", text: "We built a comprehensive design system named 'Ledger' to ensure consistency across web, iOS, and Android platforms.", image: "assets/Ticketwave/TWLandingPage.png" }
                 ]
             },
             'three': {
-                title: "Project Three",
+                title: "Patudos",
                 date: "July 2022",
                 briefTitle: "Sustainable fashion marketplace for circular economy",
                 briefText: "Connecting eco-conscious consumers with ethical brands, this marketplace was designed to make the origin of clothes transparent. We built a supply chain tracking feature directly into the product page, allowing users to see the journey of their garment. The aesthetic was intentionally earthy yet modern, avoiding typical 'greenwashing' tropes in favor of honest, data-driven storytelling about sustainability impact.",
+                headerImage: "assets/Patudos/OsPatudosheader.png",
                 blocks: [
-                    { title: "Product Page", text: "The interface highlights the 'impact score' of each item, calculating water saved and carbon reduced compared to industry averages." },
-                    { title: "Community", text: "A social hub within the app where users share repair tips and styling advice to prolong the lifecycle of their garments." },
-                    { title: "Branding", text: "The logo and typography reflect the circular nature of the economy, using organic curves and recycled paper textures in digital assets." }
+                    { title: "Product Page", text: "The interface highlights the 'impact score' of each item, calculating water saved and carbon reduced compared to industry averages.", image: "assets/Patudos/OsPatudosLandingpage.png" },
+                    { title: "Community", text: "A social hub within the app where users share repair tips and styling advice to prolong the lifecycle of their garments.", image: "assets/Patudos/OsPatudosLandingpage.png" },
+                    { title: "Branding", text: "The logo and typography reflect the circular nature of the economy, using organic curves and recycled paper textures in digital assets.", image: "assets/Patudos/OsPatudosLandingpage.png" }
                 ]
             },
             'four': {
-                title: "Project Four",
+                title: "Squid Games",
                 date: "January 2023",
                 briefTitle: "AI-driven image editor for rapid prototyping",
                 briefText: "Exploring the boundaries of generative art, we created a tool that assists designers in the early stages of concepting. By sketching rough shapes and typing prompts, users can generate high-fidelity references in seconds. The interface is minimal, getting out of the way to let the AI and the user collaborate. The focus was on 'steerability'—giving the user control over the AI's output rather than just random generation.",
+                headerImage: "assets/Squid Games/1.png",
                 blocks: [
-                    { title: "Interface", text: "A split-screen canvas allows for real-time generation as the user draws, creating a feedback loop between human intent and machine rendering." },
-                    { title: "Output", text: "Examples of the high-fidelity textures generated for architectural visualization concepts." },
-                    { title: "Interaction", text: "Custom gesture controls were implemented to allow for intuitive manipulation of light sources and composition." }
+                    { title: "Interface", text: "A split-screen canvas allows for real-time generation as the user draws, creating a feedback loop between human intent and machine rendering.", image: "assets/Squid Games/1.png" },
+                    { title: "Output", text: "Examples of the high-fidelity textures generated for architectural visualization concepts.", image: "assets/Squid Games/1.png" },
+                    { title: "Interaction", text: "Custom gesture controls were implemented to allow for intuitive manipulation of light sources and composition.", image: "assets/Squid Games/1.png" }
                 ]
             },
             'five': {
-                title: "Project Five",
+                title: "SAL",
                 date: "May 2023",
                 briefTitle: "Urban mobility solution for smart cities",
                 briefText: "Simplifying city navigation, this app integrates public transit, ride-sharing, and bike rentals into a single journey planner. The challenge was unifying disparate data sources into a cohesive UI. We developed a 'timeline' view that visualizes the entire trip linearly, accounting for transfer times and walking distances. The dark mode UI was specifically tuned for readability in variable outdoor lighting conditions.",
+                headerImage: "assets/SAL/SALheader.png",
                 blocks: [
-                    { title: "Map View", text: "A clutter-free map style that emphasizes routes and transit hubs over general geographic details, using high-contrast colors." },
-                    { title: "Ticketing", text: "A universal QR code system that works across all transit modes, accessible with a single tap from the lock screen." },
-                    { title: "Onboarding", text: "An illustrative onboarding flow that explains the benefits of multimodal transport to new users." }
+                    { title: "Map View", text: "A clutter-free map style that emphasizes routes and transit hubs over general geographic details, using high-contrast colors.", image: "assets/SAL/SALlandingpage.png" },
+                    { title: "Ticketing", text: "A universal QR code system that works across all transit modes, accessible with a single tap from the lock screen.", image: "assets/SAL/SALlandingpage.png" },
+                    { title: "Onboarding", text: "An illustrative onboarding flow that explains the benefits of multimodal transport to new users.", image: "assets/SAL/SALlandingpage.png" }
                 ]
             },
             'six': {
-                title: "Project Six",
+                title: "Fingerprint",
                 date: "August 2023",
                 briefTitle: "Mental health companion for daily mindfulness",
                 briefText: "A gentle approach to daily mindfulness, this app avoids gamification and streaks in favor of a supportive, pressure-free environment. The design uses soft gradients, fluid animations, and generative ambient soundscapes to induce a state of calm. User research indicated that notifications were a source of stress, so we implemented a 'passive' check-in system that adapts to the user's usage patterns without pestering them.",
+                headerImage: "assets/Fingerprint/1.png",
                 blocks: [
-                    { title: "Meditation", text: "The player interface is stripped back to the essentials, with a breathing guide that syncs with haptic feedback." },
-                    { title: "Journaling", text: "A voice-first journaling feature that transcribes thoughts and uses sentiment analysis to track mood trends over time." },
-                    { title: "Visuals", text: "Generative abstract art backgrounds that slowly evolve based on the duration of the user's session." }
+                    { title: "Meditation", text: "The player interface is stripped back to the essentials, with a breathing guide that syncs with haptic feedback.", image: "assets/Fingerprint/1.png" },
+                    { title: "Journaling", text: "A voice-first journaling feature that transcribes thoughts and uses sentiment analysis to track mood trends over time.", image: "assets/Fingerprint/1.png" },
+                    { title: "Visuals", text: "Generative abstract art backgrounds that slowly evolve based on the duration of the user's session.", image: "assets/Fingerprint/1.png" }
                 ]
             }
         };
@@ -382,9 +410,19 @@
                 // Load Project Data
                 const data = projects[projectId];
                 
-                // Populate Header
+                // Populate Header (text + image)
                 document.getElementById('p-title').innerText = data.title;
                 document.getElementById('p-date').innerText = data.date;
+                const headerImg = document.getElementById('p-header-image');
+                if (data.headerImage) {
+                    headerImg.src = data.headerImage;
+                    headerImg.alt = data.title + ' hero image';
+                    headerImg.classList.remove('hidden');
+                } else {
+                    headerImg.src = '';
+                    headerImg.alt = '';
+                    headerImg.classList.add('hidden');
+                }
                 
                 // Populate Brief
                 document.getElementById('p-brief-title').innerText = data.briefTitle;
@@ -403,8 +441,8 @@
                                     ${block.text}
                                 </p>
                             </div>
-                            <div class="w-full aspect-video bg-[#111111] rounded-2xl">
-                                <!-- Image placeholder -->
+                            <div class="w-full aspect-video bg-[#111111] rounded-2xl overflow-hidden">
+                                ${block.image ? `<img src="${block.image}" alt="${block.title}" class="w-full h-full object-cover" />` : ''}
                             </div>
                         </div>
                     `;
