@@ -17,11 +17,12 @@
   --slow: 620ms;
 }
 
-/* Loose marker hand, used for the wordmark. */
+/* Loose marker hand, used for the wordmark. Kept at the lightest Caveat
+   weight so it reads as a thin signature rather than a marker scrawl. */
 .font-hand {
   font-family: 'Caveat', 'Segoe Script', cursive;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 body {
@@ -102,54 +103,50 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 0.7rem;
   border-radius: 999px;
-  padding: 1.05rem 2.2rem;
-  font-size: clamp(1.0625rem, 1.25vw, 1.375rem);
+  border: 1px solid;
+  padding: 0.95rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   line-height: 1;
   white-space: nowrap;
+  background-color: transparent;
   transition:
     background-color var(--fast) var(--ease),
     color var(--fast) var(--ease),
-    border-color var(--fast) var(--ease),
-    transform var(--fast) var(--ease);
+    border-color var(--fast) var(--ease);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
+/* Primary: a white hairline pill that inverts on hover. */
 .btn-accent {
-  background-color: var(--accent);
-  color: #000;
-  font-weight: 500;
-}
-
-.btn-accent:hover {
-  background-color: #23f636;
-}
-
-.btn-ghost {
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-color: #fff;
   color: #fff;
 }
 
+.btn-accent:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Secondary: the same pill, dimmer until you reach for it. */
+.btn-ghost {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--muted);
+}
+
 .btn-ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #fff;
+  color: #fff;
 }
 
-/* The arrow nudges forward on hover — the only motion in the button. */
+/* The arrow is a static glyph — the button's own colour inversion carries the
+   hover, so nothing slides around inside it. */
 .btn .btn-arrow {
-  transition: transform var(--fast) var(--ease);
-}
-
-.btn:hover .btn-arrow {
-  transform: translateX(4px);
+  flex: none;
 }
 
 /* ---------------------------------------------------------------------------
@@ -187,23 +184,64 @@ body {
 /* ---------------------------------------------------------------------------
    Project cards
    --------------------------------------------------------------------------- */
-/* Cards darken on hover — no scale, no zoom, nothing moves. */
+/* Cards: the image darkens, the veil deepens under it, and the caption rises
+   to meet an accent rule that draws itself in. The image itself never moves —
+   no zoom, no scale. Every part shares one easing and one duration so it
+   reads as a single gesture. */
 .card-media {
-  transition: filter var(--fast) var(--ease);
+  transition: filter var(--slow) var(--ease);
 }
 
-.group:hover .card-media {
-  filter: brightness(0.45);
+.group:hover .card-media,
+.group:focus-visible .card-media {
+  filter: brightness(0.62) saturate(1.06);
 }
 
 .card-veil {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.25) 45%, transparent 78%);
   opacity: 0.85;
-  transition: opacity var(--fast) var(--ease);
+  transition: opacity var(--slow) var(--ease);
 }
 
-.group:hover .card-veil {
+.group:hover .card-veil,
+.group:focus-visible .card-veil {
   opacity: 1;
+}
+
+.card-caption {
+  transition: transform var(--slow) var(--ease);
+}
+
+.group:hover .card-caption,
+.group:focus-visible .card-caption {
+  transform: translateY(-6px);
+}
+
+/* Accent rule under the title. Drawn from the left, matching the hand-drawn
+   underline in the hero. */
+.card-rule {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--slow) var(--ease);
+}
+
+.group:hover .card-rule,
+.group:focus-visible .card-rule {
+  transform: scaleX(1);
+}
+
+/* The date trails the title by a beat. */
+.card-date {
+  transition: color var(--slow) var(--ease);
+}
+
+.group:hover .card-date,
+.group:focus-visible .card-date {
+  color: #fff;
 }
 
 /* ---------------------------------------------------------------------------
@@ -232,6 +270,152 @@ body {
 
 .tilt-right {
   transform: rotate(1.4deg);
+}
+
+/* ---------------------------------------------------------------------------
+   About page
+
+   One narrow, centred measure for the whole page. Two weights carry the
+   hierarchy — medium for headings, light for prose — and the rules between
+   sections are white hairlines rather than grey ones, so they read as
+   deliberate dividers instead of faint noise.
+   --------------------------------------------------------------------------- */
+.about-page {
+  width: 100%;
+  max-width: 68rem;
+  margin-inline: auto;
+  padding: 5rem 1.5rem 8rem;
+}
+
+@media (min-width: 768px) {
+  .about-page {
+    padding: 7rem 3.5rem 11rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-page {
+    padding-inline: 6rem;
+  }
+}
+
+.about-masthead {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+/* The title is a signpost, not the statement — small, grey and set above the
+   lead rather than competing with it. */
+.about-title {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* The intro is the one centred, full-width block — it sets the page's scale
+   before the sections settle into a left-aligned rhythm below it. */
+.about-intro {
+  text-align: center;
+  margin-bottom: 7rem;
+}
+
+.about-lead {
+  font-size: clamp(1.625rem, 3vw, 2.5rem);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* One phrase in the lead is picked out in the accent colour. */
+.about-highlight {
+  color: var(--accent);
+}
+
+.about-body {
+  font-size: 1.375rem;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+/* Sections */
+.about-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.about-section {
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 6rem;
+}
+
+.about-label {
+  font-size: 0.9375rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.about-entry + .about-entry {
+  margin-top: 4.5rem;
+}
+
+.about-entry-title {
+  font-size: clamp(1.75rem, 2.4vw, 2.125rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+
+.about-entry-sub {
+  margin-top: 0.6rem;
+  font-size: 1.375rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+
+.about-meta {
+  font-size: 0.875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+}
+
+.about-entry-title + .about-body,
+.about-entry-sub + .about-body {
+  margin-top: 1.25rem;
+}
+
+/* The rules run the full width of the page, but prose keeps a readable
+   measure rather than stretching to meet them. */
+.about-section .about-body,
+.about-entry-sub {
+  max-width: 50rem;
+}
+
+/* Skills read as label / value pairs rather than bulleted lists. */
+.about-skill-row + .about-skill-row {
+  margin-top: 3rem;
+}
+
+.about-skill-row .about-meta {
+  margin-bottom: 0.65rem;
+}
+
+.about-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /* ---------------------------------------------------------------------------

@@ -1,42 +1,30 @@
-import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
   const isAbout = useLocation().pathname === '/about'
-  const [lifted, setLifted] = useState(false)
-
-  // The hairline only appears once the page has moved, so the header sits
-  // flush against the hero on load.
-  useEffect(() => {
-    const onScroll = () => setLifted(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
-    <nav
-      className={`fixed top-0 inset-x-0 z-50 bg-black/80 backdrop-blur-md transition-colors duration-300 border-b ${
-        lifted ? 'border-hairline' : 'border-transparent'
-      }`}
-    >
-      <div className="shell py-5 md:py-6 flex justify-between items-center">
-        <Link
-          to="/"
-          className="font-hand text-[34px] md:text-[42px] leading-none -mb-1"
-        >
-          João Ilharco
-        </Link>
+    // The header scrolls away with the page — it is part of the document, not
+    // a fixed overlay. The three-column grid is what keeps the wordmark
+    // optically centred no matter how wide the "about" link gets.
+    <nav className="relative z-50 w-full px-6 md:px-10 py-6 md:py-7 grid grid-cols-[1fr_auto_1fr] items-center">
+      <span aria-hidden="true" />
 
-        <Link
-          to="/about"
-          data-active={isAbout}
-          className="link-underline text-lg md:text-xl font-normal"
-          style={{ color: isAbout ? '#fff' : 'var(--muted)' }}
-        >
-          about
-        </Link>
-      </div>
+      <Link
+        to="/"
+        className="font-hand text-[30px] md:text-[38px] leading-none justify-self-center"
+      >
+        João Ilharco
+      </Link>
+
+      <Link
+        to="/about"
+        data-active={isAbout}
+        className="link-underline justify-self-end text-base md:text-lg font-normal"
+        style={{ color: isAbout ? '#fff' : 'var(--muted)' }}
+      >
+        about
+      </Link>
     </nav>
   )
 }

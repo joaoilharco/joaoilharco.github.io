@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { projects, projectOrder } from '../data/projects.js'
 import { EMAIL } from '../data/about.js'
-import { ArrowUpRight, Underline } from './Doodles.jsx'
+import { ArrowUpRight } from './Doodles.jsx'
 
 // The grid draws its 1px rules with per-cell borders: a left border on every
 // second cell, a top border on everything from the second row down.
@@ -24,11 +24,8 @@ export default function Home() {
           style={{ color: 'var(--muted-strong)', '--delay': '90ms' }}
         >
           I design digital products with a focus on{' '}
-          <span className="relative inline-block whitespace-nowrap text-white">
-            clarity
-            <Underline />
-          </span>
-          . I translate complex user needs into experiences that feel simple and intuitive.
+          <span className="text-white">clarity</span>. I translate complex user needs into
+          experiences that feel simple and intuitive.
         </p>
 
         <div className="rise" style={{ '--delay': '180ms' }}>
@@ -60,9 +57,10 @@ export default function Home() {
 
               <div className="card-veil absolute inset-0" />
 
-              <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
+              <div className="card-caption absolute inset-x-0 bottom-0 p-7 md:p-10">
                 <h3 className="t-h2 font-medium leading-none">{project.title}</h3>
-                <p className="mt-2.5 t-label" style={{ color: 'var(--muted)' }}>
+                <span className="card-rule mt-4 w-14" />
+                <p className="card-date mt-3 t-label" style={{ color: 'var(--muted)' }}>
                   {project.date}
                 </p>
               </div>

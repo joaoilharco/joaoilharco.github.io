@@ -8,7 +8,6 @@ import {
   useParams,
 } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
-import Footer from './components/Footer.jsx'
 import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Project from './components/Project.jsx'
@@ -48,9 +47,6 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
 
-      {/* Spacer for fixed nav */}
-      <div className="h-20" />
-
       <main className="grow relative">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -59,8 +55,6 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-
-      <Footer />
     </div>
   )
 }

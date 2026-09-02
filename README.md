@@ -19,8 +19,8 @@ src/
   main.jsx            Router setup
   App.jsx             Routes + scroll behaviour
   index.css           Design tokens, fluid type scale, .shell, hover/motion
-  components/         Navbar, Footer, Home, About, Project
-  components/Doodles  Hand-drawn SVG accents (underline, squiggle, arrow)
+  components/         Navbar, Home, About, Project
+  components/Doodles  ArrowUpRight, the arrow used inside buttons
   data/projects.js    All project copy and media, keyed by URL slug
   data/about.js       Bio, experience, education, skills — mirrors assets/Resume.pdf
 public/assets/        Images, video and Resume.pdf, copied verbatim to dist/assets
@@ -41,9 +41,14 @@ Line-length measures in `ch` must sit on the element that sets the font-size, no
 on a wrapper — `ch` resolves against the element's own font, so a `max-w-[46ch]`
 on a plain `div` is measured against the inherited 16px.
 
-The accent is `#00E013`, used as an accent only: section colons, dates, bullets,
-the primary button, link underlines. Motion is one easing (`--ease`) on transform
-and opacity, and `prefers-reduced-motion` turns it all off.
+The accent is `#00E013`, used sparingly: the highlighted phrase in the About
+lead, the rule that draws in under a project card title on hover, and the nav
+link underline. Buttons are outlined pills, not filled. Motion is one easing
+(`--ease`) on transform, opacity and filter, and `prefers-reduced-motion` turns
+it all off.
+
+The header is not fixed — it scrolls away with the page. The About page opts out
+of `.shell` and uses its own `.about-page` container.
 
 ## Routes
 

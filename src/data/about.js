@@ -1,16 +1,13 @@
 // Mirrors assets/Resume.pdf — keep the two in sync when the resume changes.
 
-// The lead is split so the middle phrase can carry the hand-drawn underline.
+// The lead is split so the middle phrase can be picked out in the accent
+// colour. It now carries the whole introduction on its own.
 export const bioLead = {
   before: "I'm João, a ",
   highlight: 'Product & Web Designer',
   after:
     " with a background in Design and Multimedia Communications. I'm passionate about creating engaging, user-centered digital products that solve real problems.",
 }
-
-export const bioParagraphs = [
-  'I design digital products end to end, from user research and wireframing through to final visual design and prototyping. Alongside design I work in front-end development, which keeps what I draw grounded in what actually ships.',
-]
 
 export const experience = [
   {
