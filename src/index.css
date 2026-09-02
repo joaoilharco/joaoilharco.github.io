@@ -1,40 +1,283 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent: #00e013;
+  --color-surface: #0d0d0f;
+  --color-hairline: rgba(255, 255, 255, 0.09);
+}
+
+:root {
+  --accent: #00e013;
+  --muted: rgba(255, 255, 255, 0.68);
+  --muted-strong: rgba(255, 255, 255, 0.85);
+
+  /* Motion. One easing for everything so the whole site feels like one hand. */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --fast: 220ms;
+  --slow: 620ms;
+}
+
+/* Loose marker hand, used for the wordmark. */
+.font-hand {
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: #000000;
   color: #ffffff;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom subtle animation for buttons */
-.btn-hover {
-  transition: all 0.3s ease;
+/* ---------------------------------------------------------------------------
+   Layout
+
+   The old layout used a fixed xl:px-[330px]. On a 1440–1600px screen that left
+   the content squeezed into the middle ~860px with enormous dead margins. A
+   centred max-width container keeps line lengths sane on laptops and stops the
+   margins running away on 1080p and wider.
+   --------------------------------------------------------------------------- */
+.shell {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
-.btn-hover:hover {
+
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .shell {
+    padding-inline: 4rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Fluid type scale
+   --------------------------------------------------------------------------- */
+.t-display {
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.t-h1 {
+  font-size: clamp(2.25rem, 4.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.t-h2 {
+  font-size: clamp(1.75rem, 2.9vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.t-lead {
+  font-size: clamp(1.4rem, 2.35vw, 2.35rem);
+  line-height: 1.24;
+  letter-spacing: -0.015em;
+}
+
+.t-body {
+  font-size: clamp(1.0625rem, 1.15vw, 1.3125rem);
+  line-height: 1.55;
+}
+
+.t-label {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 999px;
+  padding: 1.05rem 2.2rem;
+  font-size: clamp(1.0625rem, 1.25vw, 1.375rem);
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color var(--fast) var(--ease),
+    color var(--fast) var(--ease),
+    border-color var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+}
+
+.btn:hover {
   transform: translateY(-2px);
 }
-.btn-outline:hover {
-  background-color: white;
-  color: black;
-}
-.btn-solid:hover {
-  opacity: 0.9;
+
+.btn:active {
+  transform: translateY(0);
 }
 
-/* Grid item hover effect */
-.project-card {
-  transition: opacity 0.3s ease;
-}
-.project-card:hover {
-  opacity: 0.8;
-  cursor: pointer;
+.btn-accent {
+  background-color: var(--accent);
+  color: #000;
+  font-weight: 500;
 }
 
-/* Simple fade transition for page switching */
+.btn-accent:hover {
+  background-color: #23f636;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* The arrow nudges forward on hover — the only motion in the button. */
+.btn .btn-arrow {
+  transition: transform var(--fast) var(--ease);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------------------------------------------------------------------------
+   Links
+   --------------------------------------------------------------------------- */
+.link-underline {
+  position: relative;
+  transition: color var(--fast) var(--ease);
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.28em;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--fast) var(--ease);
+}
+
+.link-underline:hover,
+.link-underline[data-active='true'] {
+  color: #fff;
+}
+
+.link-underline:hover::after,
+.link-underline[data-active='true']::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------------------------------------------------------
+   Project cards
+   --------------------------------------------------------------------------- */
+/* Cards darken on hover — no scale, no zoom, nothing moves. */
+.card-media {
+  transition: filter var(--fast) var(--ease);
+}
+
+.group:hover .card-media {
+  filter: brightness(0.45);
+}
+
+.card-veil {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.25) 45%, transparent 78%);
+  opacity: 0.85;
+  transition: opacity var(--fast) var(--ease);
+}
+
+.group:hover .card-veil {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   Organic accents
+
+   Hand-drawn strokes are drawn on with stroke-dashoffset rather than faded in,
+   so they read as being sketched by hand.
+   --------------------------------------------------------------------------- */
+.doodle-draw path {
+  stroke-dasharray: var(--len, 400);
+  stroke-dashoffset: var(--len, 400);
+  animation: draw 1100ms var(--ease) forwards;
+  animation-delay: var(--delay, 260ms);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Slight tilt on stamped elements — nothing here is perfectly square. */
+.tilt-left {
+  transform: rotate(-1.6deg);
+}
+
+.tilt-right {
+  transform: rotate(1.4deg);
+}
+
+/* ---------------------------------------------------------------------------
+   Page transitions
+   --------------------------------------------------------------------------- */
 .fade-enter {
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 460ms var(--ease) both;
 }
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 620ms var(--ease) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .doodle-draw path {
+    stroke-dashoffset: 0;
+  }
 }

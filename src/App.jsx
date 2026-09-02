@@ -1,4 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigationType,
+  useParams,
+} from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './components/Home.jsx'
@@ -6,37 +14,53 @@ import About from './components/About.jsx'
 import Project from './components/Project.jsx'
 import { projects } from './data/projects.js'
 
-export default function App() {
-  // view: 'home' | 'about' | 'project'
-  const [view, setView] = useState({ name: 'home', projectId: null })
+// New navigations start at the top, as in the original site. Back/forward
+// (POP) is left alone so the browser can restore the previous scroll position
+// — landing back on the grid at the card you clicked, not at the hero.
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  const navigationType = useNavigationType()
 
-  // Every view switch starts at the top, as in the original site.
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [view])
+    if (navigationType !== 'POP') {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, navigationType])
 
-  const goHome = () => setView({ name: 'home', projectId: null })
-  const goAbout = () => setView({ name: 'about', projectId: null })
-  const goProject = (projectId) => setView({ name: 'project', projectId })
+  return null
+}
 
-  const project = view.name === 'project' ? projects[view.projectId] : null
+function ProjectRoute() {
+  const { slug } = useParams()
+  const project = projects[slug]
 
+  // Unknown slug: send them home rather than rendering an empty shell.
+  if (!project) {
+    return <Navigate to="/" replace />
+  }
+
+  return <Project key={slug} project={project} />
+}
+
+export default function App() {
   return (
     <div className="min-h-screen flex flex-col selection:bg-white selection:text-black">
-      <Navbar onHome={goHome} onAbout={goAbout} isAbout={view.name === 'about'} />
+      <ScrollToTop />
+      <Navbar />
 
       {/* Spacer for fixed nav */}
       <div className="h-20" />
 
       <main className="grow relative">
-        {view.name === 'about' && <About />}
-        {project && <Project key={view.projectId} project={project} />}
-        {(view.name === 'home' || (view.name === 'project' && !project)) && (
-          <Home onSelectProject={goProject} />
-        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/work/:slug" element={<ProjectRoute />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
-      <Footer onHome={goHome} />
+      <Footer />
     </div>
   )
 }

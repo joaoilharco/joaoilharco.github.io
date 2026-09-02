@@ -4,7 +4,7 @@ const img = (src) => ({ type: 'image', src })
 const video = (src) => ({ type: 'video', src })
 
 export const projects = {
-  one: {
+  'quinta-do-outeiro': {
     title: 'Quinta do Outeiro',
     date: 'November 2025',
     briefTitle: 'Bringing local events to the virtual landscape',
@@ -19,7 +19,7 @@ export const projects = {
       },
     ],
   },
-  two: {
+  ticketwave: {
     title: 'TicketWave',
     date: 'October 2025',
     briefTitle: 'Streamlining large-scale event credentials',
@@ -39,7 +39,7 @@ export const projects = {
       },
     ],
   },
-  three: {
+  patudos: {
     title: 'Patudos',
     date: 'May 2025',
     briefTitle: 'Revitalizing the face of animal rescue',
@@ -79,7 +79,7 @@ export const projects = {
       },
     ],
   },
-  four: {
+  'squid-games': {
     title: 'Squid Games',
     date: 'December 2024',
     briefTitle: 'A motion tribute to Squid Game',
@@ -113,7 +113,7 @@ export const projects = {
       },
     ],
   },
-  five: {
+  sal: {
     title: 'SAL',
     date: 'May 2024',
     briefTitle: 'Celebrating the Portuguese language',
@@ -151,7 +151,7 @@ export const projects = {
       },
     ],
   },
-  six: {
+  fingerprint: {
     title: 'Fingerprint',
     date: 'May 2025',
     briefTitle: 'Leaving a lasting impression',
@@ -178,4 +178,11 @@ export const projects = {
 }
 
 // Order of the cards on the home grid.
-export const projectOrder = ['one', 'two', 'three', 'four', 'five', 'six']
+export const projectOrder = [
+  'quinta-do-outeiro',
+  'ticketwave',
+  'patudos',
+  'squid-games',
+  'sal',
+  'fingerprint',
+]
