@@ -1,7 +1,7 @@
+import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import { projects, projectOrder } from '../data/projects.js'
-import { EMAIL } from '../data/about.js'
-import { ArrowUpRight } from './Doodles.jsx'
+import { introPlayed, setHomeScroll, setIntroPlayed, subscribeIntro } from '../lib/intro.js'
 
 // The grid draws its 1px rules with per-cell borders: a left border on every
 // second cell, a top border on everything from the second row down.
@@ -13,31 +13,102 @@ function cellRules(index) {
 }
 
 export default function Home() {
+  // The intro is on screen until it has been scrolled through — at which
+  // point the header flips this and the section comes straight out of the
+  // document, so scrolling back up lands on the work rather than on the
+  // greeting again.
+  const showIntro = !useSyncExternalStore(subscribeIntro, introPlayed)
+  const introRef = useRef(null)
+  const introHeightRef = useRef(0)
+  const gridRef = useRef(null)
+  const anchorRef = useRef(null)
+
+  // Keep the intro's height to hand while it is mounted; it is what the
+  // remembered scroll position has to be adjusted by when the intro leaves
+  // along with the whole page.
+  useLayoutEffect(() => {
+    if (introRef.current) {
+      introHeightRef.current = introRef.current.offsetHeight
+    }
+  })
+
+  // The intro can also be dropped while you are still on the page, the moment
+  // you have scrolled past it. Note where the work sits in the viewport just
+  // before that happens — the store tells us first, while the intro is still
+  // in the document.
+  useEffect(
+    () =>
+      subscribeIntro(() => {
+        anchorRef.current = gridRef.current?.getBoundingClientRect().top ?? null
+      }),
+    []
+  )
+
+  // ...and put the work back on that exact line afterwards, so a screen's
+  // worth of document disappearing from above is invisible.
+  useLayoutEffect(() => {
+    if (showIntro || anchorRef.current === null) return
+
+    const settled = gridRef.current?.getBoundingClientRect().top
+    const drift = settled == null ? 0 : settled - anchorRef.current
+
+    // The shift is measured rather than assumed: browsers anchor the scroll
+    // offset themselves when content above the viewport goes away, so the
+    // drift is usually zero and this lands on the position we already have.
+    // Scrolled anyway, because an explicit scroll is also what settles the
+    // offset when the browser has not anchored it.
+    window.scrollTo(0, window.scrollY + drift)
+
+    anchorRef.current = null
+    introHeightRef.current = 0
+  }, [showIntro])
+
+  // Cleanup runs during the commit that navigates away, before anything has
+  // touched the scroll position. Half the intro is enough to count as seen —
+  // by then the wordmark is most of the way up and the work is in view. The
+  // height is zeroed as the intro leaves, so a value here means it is still
+  // in the document and its removal has yet to be paid for.
+  useLayoutEffect(
+    () => () => {
+      const introHeight = introHeightRef.current
+      const scrolled = window.scrollY
+
+      if (introHeight && scrolled >= introHeight * 0.5) {
+        setIntroPlayed(true)
+      }
+
+      // If the intro is going away, the document above these cards shrinks by
+      // exactly its height — so take that off the remembered position and the
+      // same cards are still under the cursor when you come back.
+      setHomeScroll(Math.max(0, scrolled - (introPlayed() ? introHeight : 0)))
+    },
+    []
+  )
+
   return (
-    <div className="fade-enter">
-      {/* Hero */}
-      <section className="shell pt-10 pb-24 md:pt-20 md:pb-32">
-        <h1 className="t-display rise font-medium mb-7">Hi!</h1>
+    <div>
+      {/* Intro. The wordmark you see here is the header's own, flown down
+          into this slot — the heading below is an invisible placeholder that
+          tells it where to sit and how big to be. */}
+      {showIntro && (
+        <section ref={introRef} className="hero-intro">
+          <h1 id="hero-wordmark-slot" className="hero-wordmark font-hand" aria-hidden="true">
+            João Ilharco
+          </h1>
 
-        <p
-          className="t-lead rise font-light max-w-[26ch] md:max-w-[34ch] mb-14"
-          style={{ color: 'var(--muted-strong)', '--delay': '90ms' }}
-        >
-          I design digital products with a focus on{' '}
-          <span className="text-white">clarity</span>. I translate complex user needs into
-          experiences that feel simple and intuitive.
-        </p>
-
-        <div className="rise" style={{ '--delay': '180ms' }}>
-          <a href={`mailto:${EMAIL}`} className="btn btn-accent">
-            Let's work!
-            <ArrowUpRight className="btn-arrow w-5 h-5" strokeWidth={2.4} />
-          </a>
-        </div>
-      </section>
+          <p className="hero-tagline">
+            I design digital products and
+            <br />
+            this is my portfolio.
+          </p>
+        </section>
+      )}
 
       {/* Work — full-bleed, edge to edge, hairline rules between cells. */}
-      <section className="w-full grid grid-cols-1 md:grid-cols-2 border-t border-hairline">
+      <section
+        ref={gridRef}
+        className="fade-enter w-full grid grid-cols-1 md:grid-cols-2 border-t border-hairline"
+      >
         {projectOrder.map((slug, index) => {
           const project = projects[slug]
           return (

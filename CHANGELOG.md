@@ -2,6 +2,54 @@
 
 Notable changes to the portfolio. Newest first.
 
+## 2026-09-03 — A landing intro, and a header that flies into place
+
+### Home intro
+
+- The page now opens on a full-screen greeting: the handwritten wordmark centred
+  in the viewport over *"I design digital products and / this is my portfolio."*
+  The old `Hi!` block — heading, paragraph and "Let's work!" button — is gone.
+- As you scroll, the wordmark rises and shrinks into the header. It is one
+  element throughout: the header's own copy is an invisible placeholder while a
+  fixed `.wordmark-fly` carries the visible name, so the landing is a swap
+  between two things already in the same place, down to the sub-pixel.
+- The flight is measured against the intro's own height, ending at the exact
+  scroll position where the work grid slides under the header. There is no dead
+  scrolling at either end.
+- The tagline travels with it — same path, same rate of shrink, fading out early
+  (`--hero-p`, `--hero-dy`, `--hero-tag-scale`). It tracks the wordmark's bottom
+  edge rather than its top, because the wordmark scales down from its top and
+  would otherwise pull away from the line beneath it.
+- Once scrolled through, the intro is taken out of the document: scrolling back
+  up returns you to the work, not the greeting. The removal waits for the scroll
+  to settle — a gesture in flight aims at an absolute position, and a document
+  that just lost a screen would land it at the bottom of the page — and the
+  scroll offset is corrected by measuring the grid's shift, since browsers
+  usually anchor it themselves.
+- Leaving home records where you were, adjusted for the intro's removal, so
+  returning from a project or About lands on the same cards with the header
+  already in place. Scrolling half the intro counts as having seen it; leaving
+  before that gets you the greeting again. A page reload always starts over.
+- New `src/lib/intro.js`: a small store the header and the home page both
+  subscribe to, so they agree at the instant the intro is dropped.
+
+### Header
+
+- Pinned only while the intro is playing, since that is the spot the wordmark is
+  flying to. The pin is released the moment the wordmark lands — its sticky
+  offset goes negative — so the header rides up and off with the page instead of
+  dragging at the top of the screen. Everywhere else it scrolls away as before.
+- Project pages keep the wordmark and the `about` link but lose the bar: the
+  header is lifted out of the flow so the hero image runs to the top of the
+  window behind it. This reverses the previous release's known side effect.
+- `about` is white on every route, no longer grey until hovered or active.
+
+### About page
+
+- The lead drops the "background in Design and Multimedia Communications" clause:
+  *"I'm João, a Product & Web Designer and I'm passionate about creating
+  engaging, user-centered digital products that solve real problems."*
+
 ## 2026-09-03 — Header, cards, buttons and a rebuilt About page
 
 ### Header
@@ -68,4 +116,5 @@ Notable changes to the portfolio. Newest first.
 ### Known side effect
 
 - Project hero images used to run behind the transparent fixed header. With a
-  static header they now start below it.
+  static header they now start below it. *(Fixed in the entry above: project
+  pages no longer render a bar.)*

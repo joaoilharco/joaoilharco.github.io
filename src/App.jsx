@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import {
   Navigate,
   Route,
@@ -12,16 +12,24 @@ import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Project from './components/Project.jsx'
 import { projects } from './data/projects.js'
+import { getHomeScroll } from './lib/intro.js'
 
-// New navigations start at the top, as in the original site. Back/forward
-// (POP) is left alone so the browser can restore the previous scroll position
-// — landing back on the grid at the card you clicked, not at the hero.
-function ScrollToTop() {
+// New navigations start at the top, as in the original site — except home,
+// which resumes where you left it. The remembered position already accounts
+// for the intro being gone, so coming back from a project lands on the same
+// cards rather than a screen below them.
+//
+// This runs before paint, so the page is drawn in its restored position
+// rather than jumping a frame later. Back/forward (POP) elsewhere is left to
+// the browser.
+function ScrollRestore() {
   const { pathname } = useLocation()
   const navigationType = useNavigationType()
 
-  useEffect(() => {
-    if (navigationType !== 'POP') {
+  useLayoutEffect(() => {
+    if (pathname === '/') {
+      window.scrollTo(0, getHomeScroll())
+    } else if (navigationType !== 'POP') {
       window.scrollTo(0, 0)
     }
   }, [pathname, navigationType])
@@ -43,8 +51,8 @@ function ProjectRoute() {
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col selection:bg-white selection:text-black">
-      <ScrollToTop />
+    <div className="relative min-h-screen flex flex-col selection:bg-white selection:text-black">
+      <ScrollRestore />
       <Navbar />
 
       <main className="grow relative">

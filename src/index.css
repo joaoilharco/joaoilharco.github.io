@@ -17,6 +17,83 @@
   --slow: 620ms;
 }
 
+/* ---------------------------------------------------------------------------
+   Wordmark
+
+   One element, two homes. On the home page the header's copy is only a
+   placeholder and the visible wordmark is `.wordmark-fly`, a fixed element
+   that starts life at hero size in the middle of the first screen and is
+   flown into the header as you scroll. Both copies share a line-height of 1
+   so scaling one onto the other lines their tops up exactly.
+   --------------------------------------------------------------------------- */
+.wordmark {
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: 30px;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .wordmark {
+    font-size: 38px;
+  }
+}
+
+.wordmark-fly {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 60;
+  transform-origin: 50% 0;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------------------------
+   Home intro
+   --------------------------------------------------------------------------- */
+.hero-intro {
+  /* Minus the header above it, so the intro is exactly one screen tall and
+     the work grid is exactly one screen of scrolling away. */
+  min-height: calc(100svh - var(--nav-h, 6rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline: 1.5rem;
+  /* Optically centred: the intro sits a touch above the true middle. */
+  padding-bottom: 8vh;
+}
+
+/* Invisible: it exists to tell the flying wordmark where to sit and how big
+   to be at rest. */
+.hero-wordmark {
+  visibility: hidden;
+  font-size: clamp(2.75rem, 8.5vw, 6.5rem);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* The tagline rides the wordmark's path, shrinks at the wordmark's rate and
+   fades against the same scroll progress, so the intro leaves as one piece
+   rather than the two halves sliding past each other. */
+.hero-tagline {
+  /* Tucked up under the wordmark — the two read as one block, not as a
+     heading with a caption adrift below it. */
+  margin-top: clamp(0.5rem, 1.2vw, 1.125rem);
+  font-size: clamp(1.125rem, 1.9vw, 1.625rem);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  max-width: 44ch;
+  color: var(--muted);
+  opacity: calc(1 - var(--hero-p, 0) * 2.6);
+  transform: translateY(var(--hero-dy, 0px)) scale(var(--hero-tag-scale, 1));
+  transform-origin: 50% 0;
+}
+
 /* Loose marker hand, used for the wordmark. Kept at the lightest Caveat
    weight so it reads as a thin signature rather than a marker scrawl. */
 .font-hand {

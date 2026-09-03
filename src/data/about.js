@@ -6,7 +6,7 @@ export const bioLead = {
   before: "I'm João, a ",
   highlight: 'Product & Web Designer',
   after:
-    " with a background in Design and Multimedia Communications. I'm passionate about creating engaging, user-centered digital products that solve real problems.",
+    " and I'm passionate about creating engaging, user-centered digital products that solve real problems.",
 }
 
 export const experience = [
