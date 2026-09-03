@@ -46,4 +46,4 @@ export const skills = [
 ]
 
 export const EMAIL = 'joaoilharco06@gmail.com'
-export const RESUME_URL = 'assets/Resume.pdf'
+export const RESUME_URL = '/assets/Resume.pdf'
