@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Portfolio of João Ilharco, Product and Web Designer.">
+	<title>João Ilharco · Portfolio</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Special+Gothic+Expanded+One&display=swap">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="navbar">
+		<a href="#top" class="wordmark">João Ilharco</a>
+		<nav>
+			<a href="#work">Work</a>
+			<a href="#about">About</a>
+			<a href="#contact">Contact</a>
+		</nav>
+	</header>
+
+	<main id="top">
+		<section class="hero">
+			<h1>
+				<span style="--index: 0">I design</span>
+				<span style="--index: 1">digital products.</span>
+			</h1>
+			<a href="#work" class="button">See my work</a>
+		</section>
+
+		<section class="services">
+			<h2 class="section-title">From the first sketch to the final pixel.</h2>
+			<ul>
+				<li>
+					<svg viewBox="0 0 48 48"><rect x="15" y="5" width="18" height="38" rx="4"/><path d="M21 10h6"/></svg>
+					Product Design
+				</li>
+				<li>
+					<svg viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="30" rx="4"/><path d="M5 17h38M10 13h1M14 13h1"/></svg>
+					Web Design
+				</li>
+				<li>
+					<svg viewBox="0 0 48 48"><circle cx="15" cy="15" r="9"/><rect x="27" y="6" width="16" height="16" rx="2"/><path d="M15 27l10 16H5z"/></svg>
+					Branding
+				</li>
+				<li>
+					<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="19"/><path d="M20 16l12 8-12 8z"/></svg>
+					Motion
+				</li>
+				<li>
+					<svg viewBox="0 0 48 48"><path d="M20 4h8v10l5 6v22a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V20l5-6z"/><rect x="15" y="25" width="18" height="10"/></svg>
+					Packaging
+				</li>
+			</ul>
+		</section>
+
+		<section id="work" class="work">
+			<h2 class="section-title">Selected work.</h2>
+			<div class="filters"></div>
+			<div class="work-grid"></div>
+		</section>
+
+		<section id="about" class="about">
+			<h2 class="section-title">About me.</h2>
+			<p class="section-subtitle">Product &amp; Web Designer. Co-founder at Aemyon.</p>
+
+			<div class="about-grid">
+				<article class="about-card">
+					<p class="eyebrow">2026 – Present</p>
+					<h3>Lead Product Designer</h3>
+					<p class="about-place">Co-founder at Aemyon</p>
+					<p>Leading design on ZDZ, a social ticketing platform, and Wave, a software suite to run events.</p>
+				</article>
+
+				<article class="about-card">
+					<p class="eyebrow">2023 – Present</p>
+					<h3>Graphic &amp; Web Designer</h3>
+					<p class="about-place">Freelance</p>
+					<p>
+						Brand identities and digital products, including responsive websites and app interfaces,
+						from user research and wireframing to final visual design and prototyping in Figma.
+					</p>
+				</article>
+
+				<article class="about-card">
+					<p class="eyebrow">Education</p>
+					<h3>Design &amp; Multimedia</h3>
+					<p class="about-place">ESEC, Coimbra · 2026</p>
+					<p>Bachelor's in Design &amp; Multimedia Communications. Now studying Web Development at the University of Coimbra.</p>
+				</article>
+
+				<article class="about-card">
+					<p class="eyebrow">Skills</p>
+					<ul class="skills">
+						<li>UX/UI Design</li>
+						<li>Interaction Design</li>
+						<li>Prototyping</li>
+						<li>User Research</li>
+						<li>HTML/CSS</li>
+						<li>Javascript</li>
+						<li>React</li>
+						<li>Figma</li>
+						<li>Adobe Suite</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section id="contact" class="contact">
+			<h2>Let's chat.</h2>
+			<p>Have a project in mind? Send me an email.</p>
+			<div class="contact-buttons">
+				<a href="mailto:joaoilharco06@gmail.com" class="button">joaoilharco06@gmail.com</a>
+				<button class="button button-outline copy-email" data-email="joaoilharco06@gmail.com">Copy email</button>
+				<a href="assets/Resume.pdf" class="button button-outline" target="_blank">My resume</a>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>© 2026 João Ilharco</p>
+		<a href="https://github.com/joaoilharco" target="_blank">GitHub</a>
+	</footer>
+
+	<dialog class="project-dialog">
+		<button class="close-button" aria-label="Close">✕</button>
+		<article></article>
+	</dialog>
+</body>
+</html>
